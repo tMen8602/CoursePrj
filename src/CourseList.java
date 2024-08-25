@@ -53,19 +53,31 @@ public class CourseList {
 
     //remove course
     public boolean removeCourse(String id) {
+        int index = -1;
+        // Find the index of the course to remove
         for (int i = 0; i < count; i++) {
             if (courses[i].getId().equals(id)) {
-                for (int j = i; j < count - 1; j++) {
-                    courses[j] = courses[j + 1];
-                }
-                count--;
-                return true;
+                index = i;
+                break;
             }
         }
-        return false;
+
+        if (index == -1) {
+            return false;
+        }
+
+        // Shift elements to remove the course
+        for (int j = index; j < count - 1; j++) {
+            courses[j] = courses[j + 1];
+        }
+        // Clear the last element
+        courses[count - 1] = null;
+        count--;
+
+        return true;
     }
 
-    //search course by Id
+    //find course by Id
     public Course findCourseById(String id) {
         for (Course c : courses) {
             if (c.getId().equals(id)) {
@@ -75,7 +87,7 @@ public class CourseList {
         return null;
     }
 
-    //search course by Title
+    //find course by Title
     public Course findCourseByTitle(String title){
         for(Course c: courses){
             if(c.getTitle().equals(title)){
@@ -86,7 +98,7 @@ public class CourseList {
     }
 
 
-    //search course by Department
+    //find course by Department
     public Course findCourseByDepartment(String department){
         for(Course c:courses){
             if(c.getDepartment().equals(department)){
@@ -105,7 +117,25 @@ public class CourseList {
 
     //find Department with most courses
     public String findDepartmentWithMostCourses(){
-        return null;
+        int[] countDepartment = new int[count];
+        for(int i = 0; i < count; i++){
+            for(int j = 0; j < count; j++){
+                if(courses[i].getDepartment().equals(courses[j].getDepartment())){
+                    countDepartment[i]++;
+                }
+            }
+        }
+        int max = 0;
+        int index = 0;
+        for(int i = 0; i < count; i++){
+            if(countDepartment[i] > max){
+                max = countDepartment[i];
+                index = i;
+            }
+        }
+
+        return courses[index].getDepartment();
+
     }
     //get all courses
     public Course[] getCourse() {
