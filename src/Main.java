@@ -50,24 +50,10 @@ public class Main {
                     searchCourseById(courseList);
                     break;
                 case 5:
-                    System.out.print("Enter course ID: ");
-                    String title = sc.nextLine();
-                    Course courseByTitle = courseList.findCourseByTitle(title);
-                    if(courseByTitle !=null){
-                        System.out.println(courseByTitle);
-                    }else{
-                        System.out.println("Course with title "+ title +" not found!");
-                    }
+                    searchCourseByTitle(courseList);
                     break;
                 case 6:
-                    System.out.print("Enter course ID: ");
-                    String department = sc.nextLine();
-                    Course courseDepartment = courseList.findCourseByDepartment(department);
-                    if(courseDepartment !=null){
-                        System.out.println(courseDepartment);
-                    }else{
-                        System.out.println("Course with department "+ department +" not found!");
-                    }
+                    searchCourseByDepartment(courseList);
                     break;
                 case 7:
                     Course[] sortC =  courseList.sortCourse();
@@ -86,6 +72,34 @@ public class Main {
             }
         }while(choice !=0);
 
+    }
+
+    private static void searchCourseByDepartment(CourseList courseList) {
+        Scanner scD = new Scanner(System.in);
+
+        System.out.print("Enter course department: ");
+        String department = scD.nextLine();
+        Course courseDepartment = courseList.findCourseByDepartment(department);
+        if(courseDepartment !=null){
+            System.out.printf("%-10s%-10s %-10s %-10s\n", "ID", "Title", "Department", "Credit");
+            System.out.println(courseDepartment);
+        }else{
+            System.out.println("Course with department "+ department +" not found!");
+        }
+    }
+
+    private static void searchCourseByTitle(CourseList courseList) {
+        Scanner scT = new Scanner(System.in);
+
+        System.out.print("Enter course title: ");
+        String title = scT.nextLine();
+        Course courseByTitle = courseList.findCourseByTitle(title);
+        if(courseByTitle !=null){
+            System.out.printf("%-10s%-10s %-10s %-10s\n", "ID", "Title", "Department", "Credit");
+            System.out.println(courseByTitle);
+        }else{
+            System.out.println("Course with title "+ title +" not found!");
+        }
     }
 
     private static void searchCourseById(CourseList courseList) {

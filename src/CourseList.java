@@ -87,9 +87,9 @@ public class CourseList {
 
     //find course by Title
     public Course findCourseByTitle(String title){
-        for(Course c: courses){
-            if(c.getTitle().equals(title)){
-                return c;
+        for (int i = 0; i < count; i++) {
+            if (courses[i].getTitle().equals(title)) {
+                return courses[i];
             }
         }
         return null;
@@ -98,9 +98,9 @@ public class CourseList {
 
     //find course by Department
     public Course findCourseByDepartment(String department){
-        for(Course c:courses){
-            if(c.getDepartment().equals(department)){
-                return c;
+        for (int i = 0; i < count; i++) {
+            if (courses[i].getDepartment().equals(department)) {
+                return courses[i];
             }
         }
         return null;
