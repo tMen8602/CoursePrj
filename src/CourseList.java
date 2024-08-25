@@ -19,7 +19,7 @@ public class CourseList {
     private int count;
 
     public CourseList(int i) {
-        courses = new Course[10];
+        courses = new Course[i];
         count = 0;
     }
     //add course
@@ -65,12 +65,10 @@ public class CourseList {
         if (index == -1) {
             return false;
         }
-
-        // Shift elements to remove the course
         for (int j = index; j < count - 1; j++) {
             courses[j] = courses[j + 1];
         }
-        // Clear the last element
+
         courses[count - 1] = null;
         count--;
 
@@ -79,9 +77,9 @@ public class CourseList {
 
     //find course by Id
     public Course findCourseById(String id) {
-        for (Course c : courses) {
-            if (c.getId().equals(id)) {
-                return c;
+        for (int i = 0; i < count; i++) {
+            if (courses[i].getId().equals(id)) {
+                return courses[i];
             }
         }
         return null;

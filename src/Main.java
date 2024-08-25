@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         CourseList courseList = new CourseList(10);
-        initData(courseList);
+//        initData(courseList);
 
         Scanner sc = new  Scanner(System.in);
         int choice;
@@ -47,10 +47,7 @@ public class Main {
 
                     break;
                 case 4:
-//                    findCourseById(courseList);
-                    System.out.print("Enter course ID: ");
-                    String idFind = sc.nextLine();
-                    courseList.findCourseById(idFind);
+                    searchCourseById(courseList);
                     break;
                 case 5:
                     System.out.print("Enter course ID: ");
@@ -88,6 +85,20 @@ public class Main {
                     break;
             }
         }while(choice !=0);
+
+    }
+
+    private static void searchCourseById(CourseList courseList) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter course ID: ");
+        String idFind = sc.nextLine();
+        Course  findCourse = courseList.findCourseById(idFind);
+        if(findCourse  !=null){
+            System.out.printf("%-10s%-10s %-10s %-10s\n", "ID", "Title", "Department", "Credit");
+            System.out.println(findCourse);
+        }else{
+            System.out.println("Course " + idFind +"not found");
+        }
 
     }
 
@@ -135,13 +146,13 @@ public class Main {
         }
     }
 
-    private static void initData(CourseList courseList) {
-        Course c1 = new Course("C01", "Java", "IT", 3);
-        Course c2 = new Course("C02", "C#", "IT", 3);
-
-        courseList.addCourse(c1);
-        courseList.addCourse(c2);
-    }
+//    private static void initData(CourseList courseList) {
+//        Course c1 = new Course("C01", "Java", "IT", 3);
+//        Course c2 = new Course("C02", "C#", "IT", 3);
+//
+//        courseList.addCourse(c1);
+//        courseList.addCourse(c2);
+//    }
 
 
 }
