@@ -135,6 +135,18 @@ public class CourseList {
         return courses[index].getDepartment();
 
     }
+    //find course with highest credit
+    public Course findCourseWithHighestCredit(){
+        int max = 0;
+        int index = 0;
+        for(int i = 0; i < count; i++){
+            if(courses[i].getCredit() > max){
+                max = courses[i].getCredit();
+                index = i;
+            }
+        }
+        return courses[index];
+    }
     //get all courses
     public Course[] getCourse() {
         return courses;

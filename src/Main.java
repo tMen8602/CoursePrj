@@ -30,7 +30,8 @@ public class Main {
             System.out.println("6. Find a course by department");
             System.out.println("7. Sort course by title");
             System.out.println("8. Find department with most courses");
-            System.out.println("9. Exit");
+            System.out.println("9. Find course with highest credit");
+            System.out.println("10. Exit");
             System.out.println("--------------------------------------");
             System.out.print("Enter your choice: ");
             choice = sc.nextInt();
@@ -64,14 +65,29 @@ public class Main {
                             System.out.println(c);
                     }
                     break;
-//                case 8:
-//                    findDepartmentWithMostCourses(courseList);
-//                    break;
+                case 8:
+                    searchDepartmentWithMostCourses(courseList);
+                    break;
                 case 9:
+                    searchCoursesWithHighestCredit(courseList);
+                    break;
+                case 10:
                     System.out.println("Goodbye!");
                     break;
             }
         }while(choice !=0);
+
+    }
+
+    private static void searchCoursesWithHighestCredit(CourseList courseList) {
+        Course courseHC = courseList.findCourseWithHighestCredit();
+        System.out.printf("%-10s%-10s %-10s %-10s\n", "ID", "Title", "Department", "Credit");
+        System.out.println(courseHC);
+    }
+
+    private static void searchDepartmentWithMostCourses(CourseList courseList) {
+        String departMC = courseList.findDepartmentWithMostCourses();
+        System.out.println("Department with most courses: "+ departMC);
 
     }
 
