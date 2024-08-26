@@ -60,7 +60,8 @@ public class Main {
                     System.out.println("Courses sorted by title:");
                     System.out.printf("%-10s%-10s %-10s %-10s\n", "ID", "Title", "Department", "Credit");
                     for(Course c : sortC){
-                        System.out.println(c);
+                        if(c != null)
+                            System.out.println(c);
                     }
                     break;
 //                case 8:
@@ -154,7 +155,7 @@ public class Main {
         System.out.printf("%-10s%-10s %-10s %-10s\n", "ID", "Title", "Department", "Credit");
         Course[] temp = courseList.getCourse();
         for (Course c : temp) {
-            if(c != null) {
+                 if(c != null) {
                 System.out.println(c);
             }
         }
